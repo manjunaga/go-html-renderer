@@ -1,0 +1,25 @@
+pipelineJob('html-generator') {
+    parameters {
+        stringParam('DEPLOYED_BY',
+            defaultValue = '',
+            description = 'Identifies who generated the latest HTML.'
+        )
+    }
+    
+    parameters {...}
+ 
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote { 
+                        url('https://github.com/manjunaga/go-html-renderer.git') // Your Github repo
+                        credentials("go-html-renderer") // Credentials ID from the previous step
+                    }
+                    branches('dynamic-html')
+                    scriptPath('Jenkinsfile')
+                }
+            }
+        }
+    }
+}
