@@ -6,8 +6,6 @@ pipelineJob('html-generator') {
         )
     }
     
-    parameters {...}
- 
     definition {
         cpsScm {
             scm {
